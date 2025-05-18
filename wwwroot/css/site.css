@@ -316,10 +316,11 @@ body {
 }
 
 .hero-content {
-    max-width: 800px;
+    max-width: 1200px;
     margin: 0 auto;
     text-align: center;
     padding: 0 var(--spacing-md);
+    width: 100%;
 }
 
 .hero h1 {
@@ -337,29 +338,47 @@ body {
 .search-container {
     position: relative;
     margin: 2rem auto;
-    max-width: 600px;
-    width: 100%;
+    max-width: 800px;
+    width: 90%;
 }
 
 .search-input {
     width: 100%;
-    padding: 1rem 1.5rem;
+    padding: 1.2rem 2rem;
     border: 2px solid rgba(255, 255, 255, 0.2);
-    border-radius: 25px;
-    font-size: 1rem;
+    border-radius: 30px;
+    font-size: 1.1rem;
     background-color: rgba(255, 255, 255, 0.1);
     color: var(--text-on-primary);
     transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .search-input::placeholder {
-    color: rgba(255, 255, 255, 0.7);
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 1.1rem;
 }
 
 .search-input:focus {
     background-color: rgba(255, 255, 255, 0.2);
     border-color: rgba(255, 255, 255, 0.4);
     outline: none;
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+}
+
+.search-results {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-top: 0.5rem;
+    max-height: 300px;
+    overflow-y: auto;
+    z-index: 1000;
+    width: 100%;
 }
 
 /* Öne Çıkan Evler */
