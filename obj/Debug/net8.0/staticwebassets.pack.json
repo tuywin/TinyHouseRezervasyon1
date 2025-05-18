@@ -17,6 +17,30 @@
       "PackagePath": "staticwebassets/favicon.ico"
     },
     {
+      "Id": "/Users/emiryildiz/TinyHouseRezervasyon/wwwroot/images/house1.jpg",
+      "PackagePath": "staticwebassets/images/house1.jpg"
+    },
+    {
+      "Id": "/Users/emiryildiz/TinyHouseRezervasyon/wwwroot/images/house2.jpg",
+      "PackagePath": "staticwebassets/images/house2.jpg"
+    },
+    {
+      "Id": "/Users/emiryildiz/TinyHouseRezervasyon/wwwroot/images/house3.jpg",
+      "PackagePath": "staticwebassets/images/house3.jpg"
+    },
+    {
+      "Id": "/Users/emiryildiz/TinyHouseRezervasyon/wwwroot/images/house4.jpg",
+      "PackagePath": "staticwebassets/images/house4.jpg"
+    },
+    {
+      "Id": "/Users/emiryildiz/TinyHouseRezervasyon/wwwroot/images/house5.jpg",
+      "PackagePath": "staticwebassets/images/house5.jpg"
+    },
+    {
+      "Id": "/Users/emiryildiz/TinyHouseRezervasyon/wwwroot/images/house6.jpg",
+      "PackagePath": "staticwebassets/images/house6.jpg"
+    },
+    {
       "Id": "/Users/emiryildiz/TinyHouseRezervasyon/wwwroot/js/site.js",
       "PackagePath": "staticwebassets/js/site.js"
     },
