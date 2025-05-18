@@ -1,0 +1,140 @@
+@{
+    ViewData["Title"] = "Rezervasyon";
+}
+
+<section class="reservation-section">
+    <div class="reservation-container">
+        <div class="reservation-grid">
+            <!-- Ev Detayları -->
+            <div class="house-details">
+                <img src="/images/house1.jpg" alt="Orman Evi" class="house-details-image">
+                <div class="house-details-content">
+                    <h2 class="house-details-title">Orman Evi</h2>
+                    <div class="house-details-info">
+                        <div class="info-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Bolu, Abant</span>
+                        </div>
+                        <div class="info-item">
+                            <i class="fas fa-bed"></i>
+                            <span>2 Yatak</span>
+                        </div>
+                        <div class="info-item">
+                            <i class="fas fa-bath"></i>
+                            <span>1 Banyo</span>
+                        </div>
+                        <div class="info-item">
+                            <i class="fas fa-users"></i>
+                            <span>Maksimum 4 Kişi</span>
+                        </div>
+                        <div class="info-item">
+                            <i class="fas fa-wifi"></i>
+                            <span>Ücretsiz Wi-Fi</span>
+                        </div>
+                        <div class="info-item">
+                            <i class="fas fa-parking"></i>
+                            <span>Ücretsiz Otopark</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Rezervasyon Formu -->
+            <div class="reservation-form">
+                <h2 class="form-title">Rezervasyon Yap</h2>
+                <form id="reservationForm">
+                    <div class="form-group">
+                        <label class="form-label">Giriş Tarihi</label>
+                        <input type="date" class="form-control" id="checkIn" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Çıkış Tarihi</label>
+                        <input type="date" class="form-control" id="checkOut" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Misafir Sayısı</label>
+                        <div class="guest-input">
+                            <div class="guest-control">
+                                <button type="button" class="guest-btn" id="decreaseGuests">-</button>
+                                <span class="guest-number" id="guestCount">2</span>
+                                <button type="button" class="guest-btn" id="increaseGuests">+</button>
+                            </div>
+                            <span>Kişi</span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Ad Soyad</label>
+                        <input type="text" class="form-control" id="fullName" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">E-posta</label>
+                        <input type="email" class="form-control" id="email" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Telefon</label>
+                        <input type="tel" class="form-control" id="phone" required>
+                    </div>
+
+                    <div class="price-summary">
+                        <div class="price-item">
+                            <span>₺1,200 x 2 gece</span>
+                            <span>₺2,400</span>
+                        </div>
+                        <div class="price-item">
+                            <span>Temizlik Ücreti</span>
+                            <span>₺100</span>
+                        </div>
+                        <div class="price-item">
+                            <span>Hizmet Bedeli</span>
+                            <span>₺200</span>
+                        </div>
+                        <div class="price-total">
+                            <span>Toplam</span>
+                            <span>₺2,700</span>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: var(--spacing-lg);">
+                        Rezervasyonu Tamamla
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+@section Scripts {
+    <script>
+        // Misafir sayısı kontrolü
+        const guestCount = document.getElementById('guestCount');
+        const decreaseBtn = document.getElementById('decreaseGuests');
+        const increaseBtn = document.getElementById('increaseGuests');
+        let count = 2;
+
+        decreaseBtn.addEventListener('click', () => {
+            if (count > 1) {
+                count--;
+                guestCount.textContent = count;
+            }
+        });
+
+        increaseBtn.addEventListener('click', () => {
+            if (count < 4) {
+                count++;
+                guestCount.textContent = count;
+            }
+        });
+
+        // Form gönderimi
+        document.getElementById('reservationForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            // Burada form verilerini işleyebilirsiniz
+            alert('Rezervasyon talebiniz alındı. En kısa sürede size dönüş yapacağız.');
+        });
+    </script>
+} 

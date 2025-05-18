@@ -28,3 +28,4 @@
 /Users/emiryildiz/TinyHouseRezervasyon/obj/Debug/net8.0/TinyHouseRezervasyon.pdb
 /Users/emiryildiz/TinyHouseRezervasyon/obj/Debug/net8.0/TinyHouseRezervasyon.genruntimeconfig.cache
 /Users/emiryildiz/TinyHouseRezervasyon/obj/Debug/net8.0/ref/TinyHouseRezervasyon.dll
+/Users/emiryildiz/TinyHouseRezervasyon/obj/Debug/net8.0/TinyHouseRezervasyon.sourcelink.json
