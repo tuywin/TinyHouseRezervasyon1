@@ -6,6 +6,10 @@
     <div class="hero-content">
         <h1>TinyHouse Rezervasyon</h1>
         <p>Doğanın kalbinde, konforlu ve ekonomik konaklama deneyimi için ideal çözüm.</p>
+        <div class="search-container">
+            <input type="text" id="searchInput" placeholder="Ev ara..." class="search-input">
+            <div id="searchResults" class="search-results"></div>
+        </div>
         <a href="/Evler" class="btn btn-primary">Evleri Keşfet</a>
     </div>
 </section>
@@ -102,3 +106,118 @@
         </div>
     </div>
 </section>
+
+@section Scripts {
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const searchInput = document.getElementById('searchInput');
+            const searchResults = document.getElementById('searchResults');
+            const houseCards = document.querySelectorAll('.house-card');
+
+            searchInput.addEventListener('input', function() {
+                const searchTerm = this.value.toLowerCase();
+                searchResults.innerHTML = '';
+                
+                if (searchTerm.length < 2) {
+                    searchResults.style.display = 'none';
+                    return;
+                }
+
+                let hasResults = false;
+                houseCards.forEach(card => {
+                    const title = card.querySelector('.house-title').textContent.toLowerCase();
+                    const location = card.querySelector('.house-location span').textContent.toLowerCase();
+                    
+                    if (title.includes(searchTerm) || location.includes(searchTerm)) {
+                        const resultItem = document.createElement('div');
+                        resultItem.className = 'search-result-item';
+                        resultItem.innerHTML = `
+                            <h4>${card.querySelector('.house-title').textContent}</h4>
+                            <p>${card.querySelector('.house-location span').textContent}</p>
+                        `;
+                        resultItem.addEventListener('click', () => {
+                            window.location.href = card.querySelector('a').href;
+                        });
+                        searchResults.appendChild(resultItem);
+                        hasResults = true;
+                    }
+                });
+
+                searchResults.style.display = hasResults ? 'block' : 'none';
+            });
+
+            // Arama sonuçlarını dışarı tıklandığında kapat
+            document.addEventListener('click', function(e) {
+                if (!searchInput.contains(e.target) && !searchResults.contains(e.target)) {
+                    searchResults.style.display = 'none';
+                }
+            });
+        });
+    </script>
+}
+
+@section Styles {
+    <style>
+        .search-container {
+            position: relative;
+            margin: 20px 0;
+            width: 100%;
+            max-width: 500px;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 12px 20px;
+            border: 2px solid #ddd;
+            border-radius: 25px;
+            font-size: 16px;
+            outline: none;
+            transition: border-color 0.3s ease;
+        }
+
+        .search-input:focus {
+            border-color: #007bff;
+        }
+
+        .search-results {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-top: 5px;
+            max-height: 300px;
+            overflow-y: auto;
+            z-index: 1000;
+        }
+
+        .search-result-item {
+            padding: 12px 20px;
+            cursor: pointer;
+            border-bottom: 1px solid #eee;
+            transition: background-color 0.2s ease;
+        }
+
+        .search-result-item:last-child {
+            border-bottom: none;
+        }
+
+        .search-result-item:hover {
+            background-color: #f8f9fa;
+        }
+
+        .search-result-item h4 {
+            margin: 0 0 5px 0;
+            color: #333;
+        }
+
+        .search-result-item p {
+            margin: 0;
+            color: #666;
+            font-size: 14px;
+        }
+    </style>
+}
