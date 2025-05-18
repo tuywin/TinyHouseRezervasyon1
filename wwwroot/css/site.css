@@ -8,13 +8,13 @@
 /* CSS Variables */
 :root {
     /* Ana Renkler */
-    --primary-color: #2e7d32;
-    --primary-light: #4caf50;
-    --primary-dark: #1b5e20;
+    --primary-color: #55A64D;
+    --primary-light: #7BC171;
+    --primary-dark: #3D7A36;
     --secondary-color: #E74C3C;
     --background-color: #ECF0F1;
     --text-color: #2C3E50;
-    --accent-color: #81c784;
+    --accent-color: #9ED495;
     --text-on-primary: #ffffff;
     
     /* Font Boyutları */
@@ -304,7 +304,7 @@ body {
 
 /* Hero Section */
 .hero {
-    background: linear-gradient(rgba(46, 125, 50, 0.9), rgba(27, 94, 32, 0.9)), url('/images/hero-bg.jpg');
+    background: linear-gradient(rgba(85, 166, 77, 0.9), rgba(61, 122, 54, 0.9)), url('/images/hero-bg.jpg');
     background-size: cover;
     background-position: center;
     color: var(--text-on-primary);
