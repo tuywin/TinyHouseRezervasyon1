@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("TinyHouseRezervasyon")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e8775215c59f6dff15ed1e75d22bf9edfd67962c")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+0ef922f6462fc7fd6951239271fd93ef2e73526e")]
 [assembly: System.Reflection.AssemblyProductAttribute("TinyHouseRezervasyon")]
 [assembly: System.Reflection.AssemblyTitleAttribute("TinyHouseRezervasyon")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
