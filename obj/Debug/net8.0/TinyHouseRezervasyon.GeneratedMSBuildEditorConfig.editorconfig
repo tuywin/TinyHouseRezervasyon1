@@ -18,6 +18,14 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = /Users/emiryildiz/TinyHouseRezervasyon
 build_property._RazorSourceGeneratorDebug = 
 
+[/Users/emiryildiz/TinyHouseRezervasyon/Views/Home/Evler.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9Fdmxlci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/emiryildiz/TinyHouseRezervasyon/Views/Home/Iletisim.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9JbGV0aXNpbS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [/Users/emiryildiz/TinyHouseRezervasyon/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9JbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 

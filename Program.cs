@@ -20,6 +20,18 @@ app.UseRouting();
 
 app.UseAuthorization();
 
+// Özel route tanımlamaları
+app.MapControllerRoute(
+    name: "evler",
+    pattern: "Evler",
+    defaults: new { controller = "Home", action = "Evler" });
+
+app.MapControllerRoute(
+    name: "iletisim",
+    pattern: "Iletisim",
+    defaults: new { controller = "Home", action = "Iletisim" });
+
+// Varsayılan route
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");

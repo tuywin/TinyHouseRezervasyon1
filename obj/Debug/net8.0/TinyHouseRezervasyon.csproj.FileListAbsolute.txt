@@ -13,6 +13,7 @@
 /Users/emiryildiz/TinyHouseRezervasyon/obj/Debug/net8.0/TinyHouseRezervasyon.MvcApplicationPartsAssemblyInfo.cache
 /Users/emiryildiz/TinyHouseRezervasyon/obj/Debug/net8.0/TinyHouseRezervasyon.RazorAssemblyInfo.cache
 /Users/emiryildiz/TinyHouseRezervasyon/obj/Debug/net8.0/TinyHouseRezervasyon.RazorAssemblyInfo.cs
+/Users/emiryildiz/TinyHouseRezervasyon/obj/Debug/net8.0/TinyHouseRezervasyon.sourcelink.json
 /Users/emiryildiz/TinyHouseRezervasyon/obj/Debug/net8.0/staticwebassets.build.json
 /Users/emiryildiz/TinyHouseRezervasyon/obj/Debug/net8.0/staticwebassets.development.json
 /Users/emiryildiz/TinyHouseRezervasyon/obj/Debug/net8.0/staticwebassets/msbuild.TinyHouseRezervasyon.Microsoft.AspNetCore.StaticWebAssets.props
@@ -28,4 +29,3 @@
 /Users/emiryildiz/TinyHouseRezervasyon/obj/Debug/net8.0/TinyHouseRezervasyon.pdb
 /Users/emiryildiz/TinyHouseRezervasyon/obj/Debug/net8.0/TinyHouseRezervasyon.genruntimeconfig.cache
 /Users/emiryildiz/TinyHouseRezervasyon/obj/Debug/net8.0/ref/TinyHouseRezervasyon.dll
-/Users/emiryildiz/TinyHouseRezervasyon/obj/Debug/net8.0/TinyHouseRezervasyon.sourcelink.json

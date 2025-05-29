@@ -18,6 +18,11 @@ public class HomeController : Controller
         return View();
     }
 
+    public IActionResult Evler()
+    {
+        return View();
+    }
+
     public IActionResult Rezervasyon()
     {
         return View();
@@ -26,6 +31,19 @@ public class HomeController : Controller
     public IActionResult Privacy()
     {
         return View();
+    }
+
+    public IActionResult Iletisim()
+    {
+        return View();
+    }
+
+    [HttpPost]
+    public IActionResult Iletisim(string name, string email, string subject, string message)
+    {
+        // TODO: E-posta gönderme işlemi burada yapılacak
+        // Şimdilik sadece başarılı mesajı döndürelim
+        return Json(new { success = true, message = "Mesajınız başarıyla gönderildi. En kısa sürede size dönüş yapacağız." });
     }
 
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

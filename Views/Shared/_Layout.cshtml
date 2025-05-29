@@ -23,7 +23,7 @@
                 <a href="/Evler" class="nav-link @(ViewContext.RouteData.Values["Action"].ToString() == "Evler" ? "active" : "")">Evler</a>
                 <a href="/Rezervasyonlar" class="nav-link @(ViewContext.RouteData.Values["Action"].ToString() == "Rezervasyonlar" ? "active" : "")">Rezervasyonlar</a>
                 <a href="/Hakkimizda" class="nav-link @(ViewContext.RouteData.Values["Action"].ToString() == "Hakkimizda" ? "active" : "")">Hakkımızda</a>
-                <a href="/Iletisim" class="nav-link @(ViewContext.RouteData.Values["Action"].ToString() == "Iletisim" ? "active" : "")">İletişim</a>
+                <a asp-controller="Home" asp-action="Iletisim" class="nav-link @(ViewContext.RouteData.Values["Action"].ToString() == "Iletisim" ? "active" : "")">İletişim</a>
             </nav>
 
             <div class="auth-buttons">

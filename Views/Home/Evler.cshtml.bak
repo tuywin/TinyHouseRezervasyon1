@@ -1,0 +1,288 @@
+@{
+    ViewData["Title"] = "Evler";
+}
+
+<section class="houses-section">
+    <div class="container">
+        <div class="section-title">
+            <h1>Tüm Evlerimiz</h1>
+            <p>Size en uygun evi bulun</p>
+        </div>
+
+        <!-- Filtreler -->
+        <div class="filters">
+            <div class="filter-group">
+                <label for="location">Konum</label>
+                <select id="location" class="form-control">
+                    <option value="">Tümü</option>
+                    <option value="bolu">Bolu</option>
+                    <option value="izmir">İzmir</option>
+                    <option value="antalya">Antalya</option>
+                    <option value="mugla">Muğla</option>
+                    <option value="rize">Rize</option>
+                    <option value="burdur">Burdur</option>
+                </select>
+            </div>
+            <div class="filter-group">
+                <label for="price">Fiyat Aralığı</label>
+                <select id="price" class="form-control">
+                    <option value="">Tümü</option>
+                    <option value="0-1000">0 - 1.000 ₺</option>
+                    <option value="1000-2000">1.000 - 2.000 ₺</option>
+                    <option value="2000-3000">2.000 - 3.000 ₺</option>
+                    <option value="3000+">3.000 ₺ ve üzeri</option>
+                </select>
+            </div>
+            <div class="filter-group">
+                <label for="guests">Misafir Sayısı</label>
+                <select id="guests" class="form-control">
+                    <option value="">Tümü</option>
+                    <option value="1-2">1-2 Kişi</option>
+                    <option value="3-4">3-4 Kişi</option>
+                    <option value="5-6">5-6 Kişi</option>
+                    <option value="7+">7+ Kişi</option>
+                </select>
+            </div>
+            <button class="btn btn-primary" onclick="applyFilters()">Filtrele</button>
+        </div>
+
+        <!-- Ev Listesi -->
+        <div class="house-grid">
+            <!-- Ev 1 -->
+            <div class="house-card">
+                <img src="/images/house1.jpg" alt="Orman Evi" class="house-image">
+                <div class="house-content">
+                    <h3 class="house-title">Orman Evi</h3>
+                    <div class="house-location">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Bolu, Abant</span>
+                    </div>
+                    <div class="house-features">
+                        <div class="feature">
+                            <i class="fas fa-bed"></i>
+                            <span>2 Yatak</span>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-bath"></i>
+                            <span>1 Banyo</span>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-users"></i>
+                            <span>4 Kişi</span>
+                        </div>
+                    </div>
+                    <div class="house-price">₺1,200 / gece</div>
+                    <a href="/Evler/Detay/1" class="btn btn-primary">Detayları Gör</a>
+                </div>
+            </div>
+
+            <!-- Ev 2 -->
+            <div class="house-card">
+                <img src="/images/house2.jpg" alt="Göl Manzaralı Ev" class="house-image">
+                <div class="house-content">
+                    <h3 class="house-title">Göl Manzaralı Ev</h3>
+                    <div class="house-location">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>İzmir, Gölcük</span>
+                    </div>
+                    <div class="house-features">
+                        <div class="feature">
+                            <i class="fas fa-bed"></i>
+                            <span>3 Yatak</span>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-bath"></i>
+                            <span>2 Banyo</span>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-users"></i>
+                            <span>6 Kişi</span>
+                        </div>
+                    </div>
+                    <div class="house-price">₺1,500 / gece</div>
+                    <a href="/Evler/Detay/2" class="btn btn-primary">Detayları Gör</a>
+                </div>
+            </div>
+
+            <!-- Ev 3 -->
+            <div class="house-card">
+                <img src="/images/house3.jpg" alt="Dağ Evi" class="house-image">
+                <div class="house-content">
+                    <h3 class="house-title">Dağ Evi</h3>
+                    <div class="house-location">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Antalya, Saklıkent</span>
+                    </div>
+                    <div class="house-features">
+                        <div class="feature">
+                            <i class="fas fa-bed"></i>
+                            <span>2 Yatak</span>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-bath"></i>
+                            <span>1 Banyo</span>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-users"></i>
+                            <span>4 Kişi</span>
+                        </div>
+                    </div>
+                    <div class="house-price">₺1,800 / gece</div>
+                    <a href="/Evler/Detay/3" class="btn btn-primary">Detayları Gör</a>
+                </div>
+            </div>
+
+            <!-- Ev 4 -->
+            <div class="house-card">
+                <img src="/images/house4.jpg" alt="Sahil Evi" class="house-image">
+                <div class="house-content">
+                    <h3 class="house-title">Sahil Evi</h3>
+                    <div class="house-location">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Muğla, Bodrum</span>
+                    </div>
+                    <div class="house-features">
+                        <div class="feature">
+                            <i class="fas fa-bed"></i>
+                            <span>4 Yatak</span>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-bath"></i>
+                            <span>2 Banyo</span>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-users"></i>
+                            <span>8 Kişi</span>
+                        </div>
+                    </div>
+                    <div class="house-price">₺2,500 / gece</div>
+                    <a href="/Evler/Detay/4" class="btn btn-primary">Detayları Gör</a>
+                </div>
+            </div>
+
+            <!-- Ev 5 -->
+            <div class="house-card">
+                <img src="/images/house5.jpg" alt="Vadi Evi" class="house-image">
+                <div class="house-content">
+                    <h3 class="house-title">Vadi Evi</h3>
+                    <div class="house-location">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Rize, Ayder</span>
+                    </div>
+                    <div class="house-features">
+                        <div class="feature">
+                            <i class="fas fa-bed"></i>
+                            <span>3 Yatak</span>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-bath"></i>
+                            <span>2 Banyo</span>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-users"></i>
+                            <span>6 Kişi</span>
+                        </div>
+                    </div>
+                    <div class="house-price">₺1,600 / gece</div>
+                    <a href="/Evler/Detay/5" class="btn btn-primary">Detayları Gör</a>
+                </div>
+            </div>
+
+            <!-- Ev 6 -->
+            <div class="house-card">
+                <img src="/images/house6.jpg" alt="Göl Kenarı Evi" class="house-image">
+                <div class="house-content">
+                    <h3 class="house-title">Göl Kenarı Evi</h3>
+                    <div class="house-location">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Burdur, Salda</span>
+                    </div>
+                    <div class="house-features">
+                        <div class="feature">
+                            <i class="fas fa-bed"></i>
+                            <span>2 Yatak</span>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-bath"></i>
+                            <span>1 Banyo</span>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-users"></i>
+                            <span>4 Kişi</span>
+                        </div>
+                    </div>
+                    <div class="house-price">₺1,400 / gece</div>
+                    <a href="/Evler/Detay/6" class="btn btn-primary">Detayları Gör</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+@section Styles {
+    <style>
+        .houses-section {
+            padding: var(--spacing-xl) 0;
+            background-color: var(--background-color);
+        }
+
+        .filters {
+            display: flex;
+            gap: var(--spacing-md);
+            margin-bottom: var(--spacing-xl);
+            flex-wrap: wrap;
+            background: white;
+            padding: var(--spacing-lg);
+            border-radius: var(--border-radius-md);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .filter-group {
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .filter-group label {
+            display: block;
+            margin-bottom: var(--spacing-xs);
+            font-weight: 500;
+            color: var(--text-color);
+        }
+
+        .filter-group select {
+            width: 100%;
+            padding: var(--spacing-sm);
+            border: 1px solid #ddd;
+            border-radius: var(--border-radius-sm);
+            font-size: var(--body-size);
+        }
+
+        .filter-group select:focus {
+            outline: none;
+            border-color: var(--primary-color);
+        }
+
+        @media (max-width: 768px) {
+            .filters {
+                flex-direction: column;
+            }
+
+            .filter-group {
+                width: 100%;
+            }
+        }
+    </style>
+}
+
+@section Scripts {
+    <script>
+        function applyFilters() {
+            const location = document.getElementById('location').value;
+            const price = document.getElementById('price').value;
+            const guests = document.getElementById('guests').value;
+
+            // Burada filtreleme mantığı eklenecek
+            console.log('Filtreler:', { location, price, guests });
+        }
+    </script>
+} 
