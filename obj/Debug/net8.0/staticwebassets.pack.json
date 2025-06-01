@@ -17,6 +17,18 @@
       "PackagePath": "staticwebassets/favicon.ico"
     },
     {
+      "Id": "/Users/emiryildiz/TinyHouseRezervasyon/wwwroot/images/antalya.jpg",
+      "PackagePath": "staticwebassets/images/antalya.jpg"
+    },
+    {
+      "Id": "/Users/emiryildiz/TinyHouseRezervasyon/wwwroot/images/bolu.jpg",
+      "PackagePath": "staticwebassets/images/bolu.jpg"
+    },
+    {
+      "Id": "/Users/emiryildiz/TinyHouseRezervasyon/wwwroot/images/hero-bg.jpg",
+      "PackagePath": "staticwebassets/images/hero-bg.jpg"
+    },
+    {
       "Id": "/Users/emiryildiz/TinyHouseRezervasyon/wwwroot/images/house1.jpg",
       "PackagePath": "staticwebassets/images/house1.jpg"
     },
@@ -39,6 +51,10 @@
     {
       "Id": "/Users/emiryildiz/TinyHouseRezervasyon/wwwroot/images/house6.jpg",
       "PackagePath": "staticwebassets/images/house6.jpg"
+    },
+    {
+      "Id": "/Users/emiryildiz/TinyHouseRezervasyon/wwwroot/images/izmir.jpg",
+      "PackagePath": "staticwebassets/images/izmir.jpg"
     },
     {
       "Id": "/Users/emiryildiz/TinyHouseRezervasyon/wwwroot/js/site.js",

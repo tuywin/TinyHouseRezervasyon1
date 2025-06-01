@@ -1,0 +1,126 @@
+@model IEnumerable<TinyHouseRezervasyon.Models.Rezervasyon>
+@{
+    ViewData["Title"] = "Rezervasyonlarım";
+}
+
+<div class="container-fluid">
+    <h1 class="h3 mb-4 text-gray-800">Rezervasyonlarım</h1>
+
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Rezervasyon Listesi</h6>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>Ev</th>
+                            <th>Giriş Tarihi</th>
+                            <th>Çıkış Tarihi</th>
+                            <th>Kişi Sayısı</th>
+                            <th>Toplam Fiyat</th>
+                            <th>Durum</th>
+                            <th>İşlemler</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var rezervasyon in Model)
+                        {
+                            <tr>
+                                <td>@rezervasyon.Ev.Baslik</td>
+                                <td>@rezervasyon.GirisTarihi.ToShortDateString()</td>
+                                <td>@rezervasyon.CikisTarihi.ToShortDateString()</td>
+                                <td>@rezervasyon.KisiSayisi</td>
+                                <td>@rezervasyon.ToplamFiyat.ToString("C")</td>
+                                <td>
+                                    <span class="badge @(rezervasyon.Durum switch {
+                                        RezervasyonDurumu.Beklemede => "badge-warning",
+                                        RezervasyonDurumu.Onaylandi => "badge-success",
+                                        RezervasyonDurumu.IptalEdildi => "badge-danger",
+                                        RezervasyonDurumu.Tamamlandi => "badge-info",
+                                        _ => "badge-secondary"
+                                    })">
+                                        @rezervasyon.Durum
+                                    </span>
+                                </td>
+                                <td>
+                                    <div class="btn-group" role="group">
+                                        @if (rezervasyon.Durum == RezervasyonDurumu.Beklemede)
+                                        {
+                                            <button type="button" class="btn btn-danger btn-sm" onclick="rezervasyonIptal(@rezervasyon.Id)">
+                                                <i class="fas fa-times"></i> İptal Et
+                                            </button>
+                                        }
+                                        <button type="button" class="btn btn-info btn-sm" onclick="rezervasyonDetay(@rezervasyon.Id)">
+                                            <i class="fas fa-info-circle"></i> Detay
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        function rezervasyonIptal(id) {
+            if (confirm('Bu rezervasyonu iptal etmek istediğinize emin misiniz?')) {
+                $.post('/Home/RezervasyonIptal/' + id)
+                    .done(function (response) {
+                        if (response.success) {
+                            toastr.success('Rezervasyon iptal edildi.');
+                            setTimeout(function () {
+                                window.location.reload();
+                            }, 1000);
+                        } else {
+                            toastr.error(response.message || 'Bir hata oluştu.');
+                        }
+                    })
+                    .fail(function () {
+                        toastr.error('Bir hata oluştu.');
+                    });
+            }
+        }
+
+        function rezervasyonDetay(id) {
+            $.get('/Home/RezervasyonDetay/' + id)
+                .done(function (response) {
+                    if (response.success) {
+                        // Detay modalını göster
+                        $('#rezervasyonDetayModal .modal-body').html(response.data);
+                        $('#rezervasyonDetayModal').modal('show');
+                    } else {
+                        toastr.error(response.message || 'Bir hata oluştu.');
+                    }
+                })
+                .fail(function () {
+                    toastr.error('Bir hata oluştu.');
+                });
+        }
+    </script>
+}
+
+<!-- Rezervasyon Detay Modal -->
+<div class="modal fade" id="rezervasyonDetayModal" tabindex="-1" role="dialog" aria-labelledby="rezervasyonDetayModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="rezervasyonDetayModalLabel">Rezervasyon Detayı</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <!-- Detay içeriği AJAX ile yüklenecek -->
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Kapat</button>
+            </div>
+        </div>
+    </div>
+</div> 

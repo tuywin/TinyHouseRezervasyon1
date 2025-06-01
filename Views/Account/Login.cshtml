@@ -1,0 +1,137 @@
+@model TinyHouseRezervasyon.ViewModels.LoginViewModel
+@{
+    ViewData["Title"] = "Giriş Yap";
+}
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="text-center">@ViewData["Title"]</h3>
+                </div>
+                <div class="card-body">
+                    <form id="loginForm" asp-action="Login" asp-controller="Account" method="post">
+                        <div asp-validation-summary="ModelOnly" class="alert alert-danger d-none" id="errorAlert"></div>
+                        <div class="alert alert-success d-none" id="successAlert"></div>
+
+                        <div class="form-group mb-3">
+                            <label asp-for="Email">E-posta</label>
+                            <input asp-for="Email" class="form-control" />
+                            <span asp-validation-for="Email" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-group mb-3">
+                            <label asp-for="Password">Şifre</label>
+                            <input asp-for="Password" class="form-control" type="password" />
+                            <span asp-validation-for="Password" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-group mb-3">
+                            <div class="form-check">
+                                <input asp-for="RememberMe" class="form-check-input" />
+                                <label asp-for="RememberMe" class="form-check-label">Beni Hatırla</label>
+                            </div>
+                        </div>
+
+                        <div class="d-grid gap-2">
+                            <button type="submit" class="btn btn-primary">Giriş Yap</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        $(document).ready(function() {
+            $('#loginForm').on('submit', function(e) {
+                e.preventDefault();
+                
+                var formData = $(this).serialize();
+
+                $.ajax({
+                    url: '@Url.Action("Login", "Account")',
+                    type: 'POST',
+                    data: formData,
+                    success: function(response) {
+                        if (response.success) {
+                            $('#successAlert').removeClass('d-none').text(response.message);
+                            setTimeout(function() {
+                                window.location.href = '/Home/Index';
+                            }, 1000);
+                        } else {
+                            $('#errorAlert').removeClass('d-none').text(response.message);
+                        }
+                    },
+                    error: function(xhr, status, error) {
+                        $('#errorAlert').removeClass('d-none').text('Bir hata oluştu: ' + error);
+                    }
+                });
+            });
+        });
+    </script>
+}
+
+<style>
+    .login-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 80vh;
+        padding: 20px;
+    }
+
+    .login-box {
+        background: white;
+        padding: 30px;
+        border-radius: 8px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        width: 100%;
+        max-width: 400px;
+    }
+
+    .login-box h2 {
+        text-align: center;
+        margin-bottom: 30px;
+        color: var(--primary-color);
+    }
+
+    .form-group {
+        margin-bottom: 20px;
+    }
+
+    .form-group label {
+        display: block;
+        margin-bottom: 5px;
+        color: #666;
+    }
+
+    .form-control {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        font-size: 16px;
+    }
+
+    .btn-primary {
+        width: 100%;
+        padding: 12px;
+        font-size: 16px;
+    }
+
+    .alert {
+        margin-top: 20px;
+        padding: 10px;
+        border-radius: 4px;
+    }
+
+    .alert-danger {
+        background-color: #f8d7da;
+        border: 1px solid #f5c6cb;
+        color: #721c24;
+    }
+</style> 

@@ -1,191 +1,80 @@
-﻿@{
+﻿@model TinyHouseRezervasyon.Models.HomeViewModel
+
+@{
     ViewData["Title"] = "Ana Sayfa";
 }
 
-<section class="hero">
-    <div class="hero-content">
-        <h1>TinyHouse Rezervasyon</h1>
-        <p>Doğanın kalbinde, konforlu ve ekonomik konaklama deneyimi için ideal çözüm.</p>
-        <div class="search-container">
-            <input type="text" id="searchInput" placeholder="Ev ara..." class="search-input">
-            <div id="searchResults" class="search-results"></div>
+<section class="hero-section">
+    <div class="container">
+        <div class="hero-content">
+            <h1>TinyHouse Rezervasyon</h1>
+            <p>Doğayla iç içe, huzurlu bir tatil için ideal evler</p>
+            <a href="@Url.Action("Evler", "Home")" class="btn btn-primary btn-lg">Evleri Keşfet</a>
         </div>
-        <a href="/Evler" class="btn btn-primary">Evleri Keşfet</a>
     </div>
 </section>
 
-<section class="featured-houses">
-    <div class="section-title">
-        <h2>Öne Çıkan Evler</h2>
-        <p>En çok tercih edilen ve en yüksek puan alan evlerimizi keşfedin.</p>
+<section class="features-section">
+    <div class="container">
+        <div class="section-title">
+            <h2>Neden Biz?</h2>
+            <p>Size en iyi hizmeti sunmak için çalışıyoruz</p>
+        </div>
+        <div class="features-grid">
+            <div class="feature-card">
+                <i class="fas fa-home"></i>
+                <h3>Özel Evler</h3>
+                <p>Her biri özenle seçilmiş, konforlu ve güvenli evler</p>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-map-marker-alt"></i>
+                <h3>Stratejik Konumlar</h3>
+                <p>Türkiye'nin en güzel lokasyonlarında evler</p>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-shield-alt"></i>
+                <h3>Güvenli Rezervasyon</h3>
+                <p>%100 güvenli ödeme ve rezervasyon sistemi</p>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-headset"></i>
+                <h3>7/24 Destek</h3>
+                <p>Her zaman yanınızda olan müşteri hizmetleri</p>
+            </div>
+        </div>
     </div>
+</section>
 
-    <div class="house-grid">
-        <!-- Ev 1 -->
-        <div class="house-card">
-            <img src="/images/house1.jpg" alt="Orman Evi" class="house-image">
-            <div class="house-content">
-                <h3 class="house-title">Orman Evi</h3>
-                <div class="house-location">
-                    <i class="fas fa-map-marker-alt"></i>
-                    <span>Bolu, Abant</span>
-                </div>
-                <div class="house-features">
-                    <div class="feature">
-                        <i class="fas fa-bed"></i>
-                        <span>2 Yatak</span>
-                    </div>
-                    <div class="feature">
-                        <i class="fas fa-bath"></i>
-                        <span>1 Banyo</span>
-                    </div>
-                    <div class="feature">
-                        <i class="fas fa-users"></i>
-                        <span>4 Kişi</span>
-                    </div>
-                </div>
-                <div class="house-price">₺1,200 / gece</div>
-                <a href="/Evler/Detay/1" class="btn btn-primary">Detayları Gör</a>
-            </div>
+<section class="popular-locations">
+    <div class="container">
+        <div class="section-title">
+            <h2>Popüler Lokasyonlar</h2>
+            <p>En çok tercih edilen bölgelerimiz</p>
         </div>
-
-        <!-- Ev 2 -->
-        <div class="house-card">
-            <img src="/images/house2.jpg" alt="Göl Manzaralı Ev" class="house-image">
-            <div class="house-content">
-                <h3 class="house-title">Göl Manzaralı Ev</h3>
-                <div class="house-location">
-                    <i class="fas fa-map-marker-alt"></i>
-                    <span>İzmir, Gölcük</span>
+        <div class="locations-grid">
+            <div class="location-card">
+                <img src="/images/bolu.jpg" alt="Bolu">
+                <div class="location-content">
+                    <h3>Bolu</h3>
+                    <p>Doğayla iç içe, huzurlu bir tatil</p>
+                    <a href="@Url.Action("Evler", "Home", new { sehir = "Bolu" })" class="btn btn-outline-light">Evleri Gör</a>
                 </div>
-                <div class="house-features">
-                    <div class="feature">
-                        <i class="fas fa-bed"></i>
-                        <span>3 Yatak</span>
-                    </div>
-                    <div class="feature">
-                        <i class="fas fa-bath"></i>
-                        <span>2 Banyo</span>
-                    </div>
-                    <div class="feature">
-                        <i class="fas fa-users"></i>
-                        <span>6 Kişi</span>
-                    </div>
-                </div>
-                <div class="house-price">₺1,500 / gece</div>
-                <a href="/Evler/Detay/2" class="btn btn-primary">Detayları Gör</a>
             </div>
-        </div>
-
-        <!-- Ev 3 -->
-        <div class="house-card">
-            <img src="/images/house3.jpg" alt="Dağ Evi" class="house-image">
-            <div class="house-content">
-                <h3 class="house-title">Dağ Evi</h3>
-                <div class="house-location">
-                    <i class="fas fa-map-marker-alt"></i>
-                    <span>Antalya, Saklıkent</span>
+            <div class="location-card">
+                <img src="/images/izmir.jpg" alt="İzmir">
+                <div class="location-content">
+                    <h3>İzmir</h3>
+                    <p>Ege'nin incisi, deniz manzaralı evler</p>
+                    <a href="@Url.Action("Evler", "Home", new { sehir = "İzmir" })" class="btn btn-outline-light">Evleri Gör</a>
                 </div>
-                <div class="house-features">
-                    <div class="feature">
-                        <i class="fas fa-bed"></i>
-                        <span>2 Yatak</span>
-                    </div>
-                    <div class="feature">
-                        <i class="fas fa-bath"></i>
-                        <span>1 Banyo</span>
-                    </div>
-                    <div class="feature">
-                        <i class="fas fa-users"></i>
-                        <span>4 Kişi</span>
-                    </div>
-                </div>
-                <div class="house-price">₺1,800 / gece</div>
-                <a href="/Evler/Detay/3" class="btn btn-primary">Detayları Gör</a>
             </div>
-        </div>
-
-        <!-- Ev 4 -->
-        <div class="house-card">
-            <img src="/images/house4.jpg" alt="Sahil Evi" class="house-image">
-            <div class="house-content">
-                <h3 class="house-title">Sahil Evi</h3>
-                <div class="house-location">
-                    <i class="fas fa-map-marker-alt"></i>
-                    <span>Muğla, Bodrum</span>
+            <div class="location-card">
+                <img src="/images/antalya.jpg" alt="Antalya">
+                <div class="location-content">
+                    <h3>Antalya</h3>
+                    <p>Akdeniz'in muhteşem koyları</p>
+                    <a href="@Url.Action("Evler", "Home", new { sehir = "Antalya" })" class="btn btn-outline-light">Evleri Gör</a>
                 </div>
-                <div class="house-features">
-                    <div class="feature">
-                        <i class="fas fa-bed"></i>
-                        <span>4 Yatak</span>
-                    </div>
-                    <div class="feature">
-                        <i class="fas fa-bath"></i>
-                        <span>2 Banyo</span>
-                    </div>
-                    <div class="feature">
-                        <i class="fas fa-users"></i>
-                        <span>8 Kişi</span>
-                    </div>
-                </div>
-                <div class="house-price">₺2,500 / gece</div>
-                <a href="/Evler/Detay/4" class="btn btn-primary">Detayları Gör</a>
-            </div>
-        </div>
-
-        <!-- Ev 5 -->
-        <div class="house-card">
-            <img src="/images/house5.jpg" alt="Vadi Evi" class="house-image">
-            <div class="house-content">
-                <h3 class="house-title">Vadi Evi</h3>
-                <div class="house-location">
-                    <i class="fas fa-map-marker-alt"></i>
-                    <span>Rize, Ayder</span>
-                </div>
-                <div class="house-features">
-                    <div class="feature">
-                        <i class="fas fa-bed"></i>
-                        <span>3 Yatak</span>
-                    </div>
-                    <div class="feature">
-                        <i class="fas fa-bath"></i>
-                        <span>2 Banyo</span>
-                    </div>
-                    <div class="feature">
-                        <i class="fas fa-users"></i>
-                        <span>6 Kişi</span>
-                    </div>
-                </div>
-                <div class="house-price">₺1,600 / gece</div>
-                <a href="/Evler/Detay/5" class="btn btn-primary">Detayları Gör</a>
-            </div>
-        </div>
-
-        <!-- Ev 6 -->
-        <div class="house-card">
-            <img src="/images/house6.jpg" alt="Göl Kenarı Evi" class="house-image">
-            <div class="house-content">
-                <h3 class="house-title">Göl Kenarı Evi</h3>
-                <div class="house-location">
-                    <i class="fas fa-map-marker-alt"></i>
-                    <span>Burdur, Salda</span>
-                </div>
-                <div class="house-features">
-                    <div class="feature">
-                        <i class="fas fa-bed"></i>
-                        <span>2 Yatak</span>
-                    </div>
-                    <div class="feature">
-                        <i class="fas fa-bath"></i>
-                        <span>1 Banyo</span>
-                    </div>
-                    <div class="feature">
-                        <i class="fas fa-users"></i>
-                        <span>4 Kişi</span>
-                    </div>
-                </div>
-                <div class="house-price">₺1,400 / gece</div>
-                <a href="/Evler/Detay/6" class="btn btn-primary">Detayları Gör</a>
             </div>
         </div>
     </div>
@@ -251,8 +140,8 @@
                 </select>
             </div>
             <div class="form-group">
-                <label for="loginUsername">Kullanıcı Adı</label>
-                <input type="text" id="loginUsername" name="username" required>
+                <label for="loginEmail">E-posta</label>
+                <input type="email" id="loginEmail" name="email" required>
             </div>
             <div class="form-group">
                 <label for="loginPassword">Şifre</label>
@@ -330,14 +219,48 @@
         // Form işlemleri
         document.getElementById('registerForm').addEventListener('submit', function(e) {
             e.preventDefault();
-            // Kayıt işlemleri burada yapılacak
-            console.log('Kayıt formu gönderildi');
+            const formData = new FormData(this);
+            
+            fetch('/Account/Register', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    alert('Kayıt başarılı! Giriş yapabilirsiniz.');
+                    closeRegisterModal();
+                    openLoginModal();
+                } else {
+                    alert(data.message || 'Kayıt sırasında bir hata oluştu.');
+                }
+            })
+            .catch(error => {
+                console.error('Hata:', error);
+                alert('Bir hata oluştu. Lütfen daha sonra tekrar deneyin.');
+            });
         });
 
         document.getElementById('loginForm').addEventListener('submit', function(e) {
             e.preventDefault();
-            // Giriş işlemleri burada yapılacak
-            console.log('Giriş formu gönderildi');
+            const formData = new FormData(this);
+            
+            fetch('/Account/Login', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    window.location.reload();
+                } else {
+                    alert(data.message || 'Giriş sırasında bir hata oluştu.');
+                }
+            })
+            .catch(error => {
+                console.error('Hata:', error);
+                alert('Bir hata oluştu. Lütfen daha sonra tekrar deneyin.');
+            });
         });
 
         // Modal dışına tıklandığında kapatma
@@ -351,181 +274,149 @@
 
 @section Styles {
     <style>
-        .search-container {
-            position: relative;
-            margin: 20px 0;
-            width: 100%;
-            max-width: 500px;
+        .hero-section {
+            background-image: url('/images/hero-bg.jpg');
+            background-size: cover;
+            background-position: center;
+            height: 600px;
+            display: flex;
+            align-items: center;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
         }
 
-        .search-input {
-            width: 100%;
-            padding: 12px 20px;
-            border: 2px solid #ddd;
-            border-radius: 25px;
-            font-size: 16px;
-            outline: none;
-            transition: border-color 0.3s ease;
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: var(--spacing-xl) 0;
         }
 
-        .search-input:focus {
-            border-color: #007bff;
+        .hero-content h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: var(--spacing-md);
         }
 
-        .search-results {
-            display: none;
-            position: absolute;
-            top: 100%;
-            left: 0;
-            right: 0;
-            background: white;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            margin-top: 5px;
-            max-height: 300px;
-            overflow-y: auto;
-            z-index: 1000;
+        .hero-content p {
+            font-size: 1.5rem;
+            margin-bottom: var(--spacing-lg);
         }
 
-        .search-result-item {
-            padding: 12px 20px;
-            cursor: pointer;
-            border-bottom: 1px solid #eee;
-            transition: background-color 0.2s ease;
-        }
-
-        .search-result-item:last-child {
-            border-bottom: none;
-        }
-
-        .search-result-item:hover {
+        .features-section {
+            padding: 4rem 0;
             background-color: #f8f9fa;
         }
 
-        .search-result-item h4 {
-            margin: 0 0 5px 0;
-            color: #333;
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: var(--spacing-lg);
+            margin-top: var(--spacing-xl);
         }
 
-        .search-result-item p {
-            margin: 0;
-            color: #666;
-            font-size: 14px;
+        .feature-card {
+            text-align: center;
+            padding: 2rem;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
         }
 
-        /* Yeni yeşil tema renkleri */
-        :root {
-            --primary-color: #2e7d32;
-            --primary-light: #4caf50;
-            --primary-dark: #1b5e20;
-            --accent-color: #81c784;
-            --text-on-primary: #ffffff;
+        .feature-card:hover {
+            transform: translateY(-5px);
         }
 
-        .hero {
-            background: linear-gradient(rgba(46, 125, 50, 0.9), rgba(27, 94, 32, 0.9)), url('/images/hero-bg.jpg');
+        .feature-icon {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
         }
 
-        .btn-primary {
-            background-color: var(--primary-color);
-            border-color: var(--primary-color);
-        }
-
-        .btn-primary:hover {
-            background-color: var(--primary-dark);
-            border-color: var(--primary-dark);
-        }
-
-        .btn-outline {
-            border: 2px solid var(--primary-color);
+        .feature-card h3 {
+            font-size: 1.25rem;
+            margin-bottom: var(--spacing-sm);
             color: var(--primary-color);
         }
 
-        .btn-outline:hover {
-            background-color: var(--primary-color);
-            color: var(--text-on-primary);
+        .feature-card p {
+            color: var(--text-muted);
+            margin: 0;
         }
 
-        /* Modal stilleri */
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 1000;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0,0,0,0.5);
+        .popular-locations {
+            padding: 4rem 0;
         }
 
-        .modal-content {
-            background-color: #fefefe;
-            margin: 5% auto;
-            padding: 20px;
-            border-radius: 8px;
-            width: 90%;
-            max-width: 500px;
+        .locations-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--spacing-lg);
+            margin-top: var(--spacing-xl);
+        }
+
+        .location-card {
             position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+            margin-bottom: 2rem;
         }
 
-        .close {
+        .location-card img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .location-card:hover img {
+            transform: scale(1.05);
+        }
+
+        .location-content {
             position: absolute;
-            right: 20px;
-            top: 10px;
-            font-size: 28px;
-            font-weight: bold;
-            cursor: pointer;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 2rem;
+            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+            color: white;
         }
 
-        .auth-buttons {
-            display: flex;
-            gap: 10px;
-            margin: 20px 0;
+        .location-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: var(--spacing-xs);
         }
 
-        .auth-form {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
+        .location-content p {
+            margin-bottom: var(--spacing-md);
+            opacity: 0.9;
         }
 
-        .form-group {
-            display: flex;
-            flex-direction: column;
-            gap: 5px;
+        .btn-outline-light {
+            border: 2px solid white;
+            color: white;
+            background: transparent;
+            transition: all 0.3s ease;
         }
 
-        .form-group label {
-            font-weight: 500;
-            color: #333;
+        .btn-outline-light:hover {
+            background: white;
+            color: var(--primary-color);
         }
 
-        .form-group input,
-        .form-group select {
-            padding: 10px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            font-size: 16px;
-        }
+        @@media (max-width: 768px) {
+            .hero-section {
+                height: 400px;
+            }
 
-        .form-group input:focus,
-        .form-group select:focus {
-            border-color: var(--primary-color);
-            outline: none;
-        }
+            .feature-card {
+                margin-bottom: 1rem;
+            }
 
-        /* Diğer yeşil tema güncellemeleri */
-        .house-card {
-            border: 1px solid #e0e0e0;
-            transition: box-shadow 0.3s ease;
-        }
-
-        .house-card:hover {
-            box-shadow: 0 4px 8px rgba(46, 125, 50, 0.1);
-        }
-
-        .section-title h2 {
-            color: var(--primary-dark);
+            .location-card img {
+                height: 200px;
+            }
         }
     </style>
 }

@@ -4,52 +4,110 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - TinyHouse Rezervasyon</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/TinyHouseRezervasyon.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
     @await RenderSectionAsync("Styles", required: false)
+    <style>
+        body {
+            background-color: #e8f4f8;
+        }
+        .navbar {
+            background-color: #ffffff !important;
+            box-shadow: 0 2px 4px rgba(0,0,0,.1);
+        }
+        .footer {
+            background-color: #ffffff;
+            padding: 20px 0;
+            margin-top: 50px;
+        }
+        .container {
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,.1);
+            padding: 20px;
+            margin-top: 20px;
+        }
+    </style>
 </head>
 <body>
-    <header class="header">
-        <div class="header-container">
-            <a href="/" class="logo">
-                <span>TinyHouse</span>
-            </a>
-            
-            <nav class="nav-menu" id="navMenu">
-                <a href="/" class="nav-link @(ViewContext.RouteData.Values["Action"].ToString() == "Index" ? "active" : "")">Ana Sayfa</a>
-                <a href="/Evler" class="nav-link @(ViewContext.RouteData.Values["Action"].ToString() == "Evler" ? "active" : "")">Evler</a>
-                <a href="/Rezervasyonlar" class="nav-link @(ViewContext.RouteData.Values["Action"].ToString() == "Rezervasyonlar" ? "active" : "")">Rezervasyonlar</a>
-                <a href="/Hakkimizda" class="nav-link @(ViewContext.RouteData.Values["Action"].ToString() == "Hakkimizda" ? "active" : "")">Hakkımızda</a>
-                <a asp-controller="Home" asp-action="Iletisim" class="nav-link @(ViewContext.RouteData.Values["Action"].ToString() == "Iletisim" ? "active" : "")">İletişim</a>
-            </nav>
-
-            <div class="auth-buttons">
-                <button class="btn btn-outline" onclick="openLoginModal()">Giriş Yap</button>
-                <button class="btn btn-primary" onclick="openRegisterModal()">Kayıt Ol</button>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+            <div class="container">
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">TinyHouse Rezervasyon</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                    <ul class="navbar-nav flex-grow-1">
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Ana Sayfa</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Evler">Evler</a>
+                        </li>
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Rezervasyonlar">Rezervasyonlarım</a>
+                            </li>
+                        }
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Hakkimizda">Hakkımızda</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Iletisim">İletişim</a>
+                        </li>
+                    </ul>
+                    <ul class="navbar-nav">
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle text-dark" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i class="fas fa-user-circle me-1"></i>@User.Identity.Name
+                                </a>
+                                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                    <li><a class="dropdown-item" href="/Home/Rezervasyonlar"><i class="fas fa-calendar-alt me-2"></i>Rezervasyonlarım</a></li>
+                                    <li><hr class="dropdown-divider"></li>
+                                    <li>
+                                        <form asp-controller="Account" asp-action="Logout" method="post" id="logoutForm" class="d-inline">
+                                            <button type="submit" class="dropdown-item"><i class="fas fa-sign-out-alt me-2"></i>Çıkış Yap</button>
+                                        </form>
+                                    </li>
+                                </ul>
+                            </li>
+                        }
+                        else
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-controller="Account" asp-action="Login"><i class="fas fa-sign-in-alt me-1"></i>Giriş Yap</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-controller="Account" asp-action="Register"><i class="fas fa-user-plus me-1"></i>Kayıt Ol</a>
+                            </li>
+                        }
+                    </ul>
+                </div>
             </div>
-
-            <button class="mobile-menu-btn" id="mobileMenuBtn">
-                <i class="fas fa-bars"></i>
-            </button>
-        </div>
+        </nav>
     </header>
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
 
-    <main>
-        @RenderBody()
-    </main>
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            &copy; 2024 - TinyHouse Rezervasyon - <a asp-area="" asp-controller="Home" asp-action="Hakkimizda">Hakkımızda</a>
+        </div>
+    </footer>
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
-    <script>
-        // Mobil menü toggle
-        document.getElementById('mobileMenuBtn').addEventListener('click', function() {
-            document.getElementById('navMenu').classList.toggle('active');
-        });
-    </script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

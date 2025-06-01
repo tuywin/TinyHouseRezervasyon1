@@ -1,0 +1,46 @@
+@model IEnumerable<TinyHouseRezervasyon.Models.Ev>
+
+<div class="house-grid">
+    @if (!Model.Any())
+    {
+        <div class="no-results">
+            <p>Arama kriterlerinize uygun ev bulunamadı.</p>
+        </div>
+    }
+    else
+    {
+        @foreach (var ev in Model)
+        {
+            <div class="house-card">
+                <img src="@ev.ResimUrl" alt="@ev.Baslik" class="house-image">
+                <div class="house-content">
+                    <h3 class="house-title">@ev.Baslik</h3>
+                    <p class="house-location">
+                        <i class="fas fa-map-marker-alt"></i>
+                        @ev.Sehir, @ev.Ilce
+                    </p>
+                    <div class="house-features">
+                        <span class="feature">
+                            <i class="fas fa-user"></i>
+                            @ev.KisiSayisi Kişilik
+                        </span>
+                        <span class="feature">
+                            <i class="fas fa-bed"></i>
+                            @ev.YatakSayisi Yatak
+                        </span>
+                        <span class="feature">
+                            <i class="fas fa-bath"></i>
+                            @ev.BanyoSayisi Banyo
+                        </span>
+                    </div>
+                    <div class="house-price">
+                        @ev.Fiyat.ToString("N0") ₺ / gece
+                    </div>
+                    <a href="@Url.Action("Detay", "Home", new { id = ev.Id })" class="btn btn-primary btn-block">
+                        Detayları Gör
+                    </a>
+                </div>
+            </div>
+        }
+    }
+</div> 

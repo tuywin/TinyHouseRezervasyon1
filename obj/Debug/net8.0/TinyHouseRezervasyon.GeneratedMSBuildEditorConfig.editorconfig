@@ -18,8 +18,52 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = /Users/emiryildiz/TinyHouseRezervasyon
 build_property._RazorSourceGeneratorDebug = 
 
+[/Users/emiryildiz/TinyHouseRezervasyon/Views/Account/Login.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQWNjb3VudC9Mb2dpbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/emiryildiz/TinyHouseRezervasyon/Views/Account/Register.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQWNjb3VudC9SZWdpc3Rlci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/emiryildiz/TinyHouseRezervasyon/Views/Admin/Evler.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQWRtaW4vRXZsZXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/emiryildiz/TinyHouseRezervasyon/Views/Admin/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQWRtaW4vSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/emiryildiz/TinyHouseRezervasyon/Views/Admin/Kullanicilar.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQWRtaW4vS3VsbGFuaWNpbGFyLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/emiryildiz/TinyHouseRezervasyon/Views/Admin/Rezervasyonlar.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQWRtaW4vUmV6ZXJ2YXN5b25sYXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/emiryildiz/TinyHouseRezervasyon/Views/Ev/Detay.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvRXYvRGV0YXkuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/emiryildiz/TinyHouseRezervasyon/Views/Ev/Duzenle.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvRXYvRHV6ZW5sZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/emiryildiz/TinyHouseRezervasyon/Views/Ev/Ekle.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvRXYvRWtsZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/emiryildiz/TinyHouseRezervasyon/Views/Ev/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvRXYvSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [/Users/emiryildiz/TinyHouseRezervasyon/Views/Home/Evler.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9Fdmxlci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/emiryildiz/TinyHouseRezervasyon/Views/Home/Hakkimizda.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9IYWtraW1pemRhLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [/Users/emiryildiz/TinyHouseRezervasyon/Views/Home/Iletisim.cshtml]
@@ -38,8 +82,20 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9SZXplcnZhc3lvbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[/Users/emiryildiz/TinyHouseRezervasyon/Views/Home/Rezervasyonlar.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9SZXplcnZhc3lvbmxhci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/emiryildiz/TinyHouseRezervasyon/Views/Home/_EvListesi.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9fRXZMaXN0ZXNpLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [/Users/emiryildiz/TinyHouseRezervasyon/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL0Vycm9yLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/emiryildiz/TinyHouseRezervasyon/Views/Shared/_EvListesi.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL19Fdkxpc3Rlc2kuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [/Users/emiryildiz/TinyHouseRezervasyon/Views/Shared/_ValidationScriptsPartial.cshtml]

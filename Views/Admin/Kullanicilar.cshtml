@@ -1,0 +1,154 @@
+@model IEnumerable<TinyHouseRezervasyon.Models.ApplicationUser>
+@{
+    ViewData["Title"] = "Kullanıcılar";
+}
+
+<div class="container mt-4">
+    <h2>Kullanıcılar</h2>
+
+    <div class="card shadow-sm mb-4">
+        <div class="card-body">
+            <form id="filterForm" class="row g-3">
+                <div class="col-md-3">
+                    <label for="rol" class="form-label">Rol</label>
+                    <select class="form-select" id="rol" name="rol">
+                        <option value="">Tümü</option>
+                        <option value="Admin">Admin</option>
+                        <option value="EvSahibi">Ev Sahibi</option>
+                        <option value="Kullanici">Kullanıcı</option>
+                    </select>
+                </div>
+                <div class="col-md-3">
+                    <label for="durum" class="form-label">Durum</label>
+                    <select class="form-select" id="durum" name="durum">
+                        <option value="">Tümü</option>
+                        <option value="true">Aktif</option>
+                        <option value="false">Pasif</option>
+                    </select>
+                </div>
+                <div class="col-md-4">
+                    <label for="arama" class="form-label">Arama</label>
+                    <input type="text" class="form-control" id="arama" name="arama" placeholder="Ad, soyad veya e-posta...">
+                </div>
+                <div class="col-md-2">
+                    <label class="form-label">&nbsp;</label>
+                    <button type="submit" class="btn btn-primary w-100">Filtrele</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="table-responsive">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Ad Soyad</th>
+                    <th>E-posta</th>
+                    <th>Telefon</th>
+                    <th>Rol</th>
+                    <th>Durum</th>
+                    <th>Kayıt Tarihi</th>
+                    <th>İşlemler</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var kullanici in Model)
+                {
+                    <tr>
+                        <td>@kullanici.Id</td>
+                        <td>@kullanici.FullName</td>
+                        <td>@kullanici.Email</td>
+                        <td>@kullanici.PhoneNumber</td>
+                        <td>
+                            <span class="badge bg-@(kullanici.Roles switch {
+                                "Admin" => "danger",
+                                "EvSahibi" => "success",
+                                "Kullanici" => "primary",
+                                _ => "secondary"
+                            })">
+                                @kullanici.Roles
+                            </span>
+                        </td>
+                        <td>
+                            <span class="badge bg-@(kullanici.Aktif ? "success" : "danger")">
+                                @(kullanici.Aktif ? "Aktif" : "Pasif")
+                            </span>
+                        </td>
+                        <td>@kullanici.KayitTarihi.ToShortDateString()</td>
+                        <td>
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-sm btn-primary" onclick="kullaniciDetay('@kullanici.Id')">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                                <button type="button" class="btn btn-sm btn-warning" onclick="kullaniciDuzenle('@kullanici.Id')">
+                                    <i class="fas fa-edit"></i>
+                                </button>
+                                @if (kullanici.Aktif)
+                                {
+                                    <button type="button" class="btn btn-sm btn-danger" onclick="kullaniciPasifYap('@kullanici.Id')">
+                                        <i class="fas fa-ban"></i>
+                                    </button>
+                                }
+                                else
+                                {
+                                    <button type="button" class="btn btn-sm btn-success" onclick="kullaniciAktifYap('@kullanici.Id')">
+                                        <i class="fas fa-check"></i>
+                                    </button>
+                                }
+                            </div>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        $(document).ready(function() {
+            $('#filterForm').on('submit', function(e) {
+                e.preventDefault();
+                var formData = $(this).serialize();
+                $.get('/Admin/Kullanicilar?' + formData, function(data) {
+                    $('tbody').html($(data).find('tbody').html());
+                });
+            });
+        });
+
+        function kullaniciDetay(id) {
+            window.location.href = '/Admin/KullaniciDetay/' + id;
+        }
+
+        function kullaniciDuzenle(id) {
+            window.location.href = '/Admin/KullaniciDuzenle/' + id;
+        }
+
+        function kullaniciPasifYap(id) {
+            if (confirm('Bu kullanıcıyı pasif yapmak istediğinize emin misiniz?')) {
+                $.post('/Admin/KullaniciPasifYap/' + id, function(response) {
+                    if (response.success) {
+                        toastr.success('Kullanıcı pasif yapıldı');
+                        location.reload();
+                    } else {
+                        toastr.error(response.message);
+                    }
+                });
+            }
+        }
+
+        function kullaniciAktifYap(id) {
+            if (confirm('Bu kullanıcıyı aktif yapmak istediğinize emin misiniz?')) {
+                $.post('/Admin/KullaniciAktifYap/' + id, function(response) {
+                    if (response.success) {
+                        toastr.success('Kullanıcı aktif yapıldı');
+                        location.reload();
+                    } else {
+                        toastr.error(response.message);
+                    }
+                });
+            }
+        }
+    </script>
+} 

@@ -2,195 +2,83 @@
     ViewData["Title"] = "İletişim";
 }
 
-<section class="contact-section">
-    <div class="container">
-        <div class="section-title">
-            <h1>İletişim</h1>
-            <p>Bizimle iletişime geçin</p>
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-6">
+            <h2 class="mb-4">İletişim Bilgileri</h2>
+            <div class="card mb-4">
+                <div class="card-body">
+                    <h5 class="card-title"><i class="fas fa-map-marker-alt me-2"></i>Adres</h5>
+                    <p class="card-text">Örnek Mahallesi, Örnek Sokak No:1<br>34000 İstanbul, Türkiye</p>
+                </div>
+            </div>
+            <div class="card mb-4">
+                <div class="card-body">
+                    <h5 class="card-title"><i class="fas fa-phone me-2"></i>Telefon</h5>
+                    <p class="card-text">+90 (212) 123 45 67</p>
+                </div>
+            </div>
+            <div class="card mb-4">
+                <div class="card-body">
+                    <h5 class="card-title"><i class="fas fa-envelope me-2"></i>E-posta</h5>
+                    <p class="card-text">info@tinyhouse.com</p>
+                </div>
+            </div>
         </div>
-
-        <div class="contact-content">
-            <div class="contact-info">
-                <div class="info-item">
-                    <i class="fas fa-map-marker-alt"></i>
-                    <div>
-                        <h3>Adres</h3>
-                        <p>Çubuk, Ankara, Türkiye</p>
-                    </div>
+        <div class="col-md-6">
+            <h2 class="mb-4">Bize Ulaşın</h2>
+            <form id="contactForm">
+                <div class="mb-3">
+                    <label for="name" class="form-label">Adınız Soyadınız</label>
+                    <input type="text" class="form-control" id="name" name="name" required>
                 </div>
-                <div class="info-item">
-                    <i class="fas fa-phone"></i>
-                    <div>
-                        <h3>Telefon</h3>
-                        <p>+90 (212) 073 2121</p>
-                    </div>
+                <div class="mb-3">
+                    <label for="email" class="form-label">E-posta Adresiniz</label>
+                    <input type="email" class="form-control" id="email" name="email" required>
                 </div>
-                <div class="info-item">
-                    <i class="fas fa-envelope"></i>
-                    <div>
-                        <h3>E-posta</h3>
-                        <p>info@tinyhouse.com</p>
-                    </div>
+                <div class="mb-3">
+                    <label for="subject" class="form-label">Konu</label>
+                    <input type="text" class="form-control" id="subject" name="subject" required>
                 </div>
-            </div>
-
-            <div class="contact-form">
-                <form id="contactForm">
-                    @Html.AntiForgeryToken()
-                    <div class="form-group">
-                        <label for="name">Adınız Soyadınız</label>
-                        <input type="text" id="name" name="name" class="form-control" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="email">E-posta Adresiniz</label>
-                        <input type="email" id="email" name="email" class="form-control" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="subject">Konu</label>
-                        <input type="text" id="subject" name="subject" class="form-control" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="message">Mesajınız</label>
-                        <textarea id="message" name="message" class="form-control" rows="5" required></textarea>
-                    </div>
-                    <button type="submit" class="btn btn-primary">Gönder</button>
-                </form>
-            </div>
+                <div class="mb-3">
+                    <label for="message" class="form-label">Mesajınız</label>
+                    <textarea class="form-control" id="message" name="message" rows="5" required></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Gönder</button>
+            </form>
         </div>
     </div>
-</section>
-
-@section Styles {
-    <style>
-        .contact-section {
-            padding: var(--spacing-xl) 0;
-            background-color: var(--background-color);
-        }
-
-        .contact-content {
-            display: grid;
-            grid-template-columns: 1fr 2fr;
-            gap: var(--spacing-xl);
-            margin-top: var(--spacing-xl);
-        }
-
-        .contact-info {
-            background: white;
-            padding: var(--spacing-lg);
-            border-radius: var(--border-radius-md);
-            box-shadow: var(--shadow-sm);
-        }
-
-        .info-item {
-            display: flex;
-            align-items: flex-start;
-            gap: var(--spacing-md);
-            margin-bottom: var(--spacing-lg);
-        }
-
-        .info-item i {
-            font-size: 1.5rem;
-            color: var(--primary-color);
-        }
-
-        .info-item h3 {
-            margin-bottom: var(--spacing-xs);
-            color: var(--text-color);
-        }
-
-        .info-item p {
-            color: var(--text-muted);
-        }
-
-        .contact-form {
-            background: white;
-            padding: var(--spacing-lg);
-            border-radius: var(--border-radius-md);
-            box-shadow: var(--shadow-sm);
-        }
-
-        .form-group {
-            margin-bottom: var(--spacing-md);
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: var(--spacing-xs);
-            color: var(--text-color);
-            font-weight: 500;
-        }
-
-        .form-control {
-            width: 100%;
-            padding: var(--spacing-sm);
-            border: 1px solid #ddd;
-            border-radius: var(--border-radius-sm);
-            font-size: var(--body-size);
-            transition: border-color 0.3s ease;
-        }
-
-        .form-control:focus {
-            outline: none;
-            border-color: var(--primary-color);
-        }
-
-        textarea.form-control {
-            resize: vertical;
-            min-height: 120px;
-        }
-
-        @@media (max-width: 768px) {
-            .contact-content {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
-}
+</div>
 
 @section Scripts {
     <script>
-        document.getElementById('contactForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // Form verilerini al
-            const formData = {
-                name: document.getElementById('name').value,
-                email: document.getElementById('email').value,
-                subject: document.getElementById('subject').value,
-                message: document.getElementById('message').value
-            };
+        $(document).ready(function() {
+            $('#contactForm').on('submit', function(e) {
+                e.preventDefault();
+                
+                var formData = {
+                    name: $('#name').val(),
+                    email: $('#email').val(),
+                    subject: $('#subject').val(),
+                    message: $('#message').val()
+                };
 
-            // Form gönderimi sırasında butonu devre dışı bırak
-            const submitButton = this.querySelector('button[type="submit"]');
-            submitButton.disabled = true;
-            submitButton.innerHTML = 'Gönderiliyor...';
-
-            // AJAX ile form verilerini gönder
-            fetch('/Home/Iletisim', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'RequestVerificationToken': document.querySelector('input[name="__RequestVerificationToken"]').value
-                },
-                body: JSON.stringify(formData)
-            })
-            .then(response => response.json())
-            .then(data => {
-                if (data.success) {
-                    alert(data.message);
-                    this.reset();
-                } else {
-                    alert('Bir hata oluştu. Lütfen daha sonra tekrar deneyin.');
-                }
-            })
-            .catch(error => {
-                console.error('Hata:', error);
-                alert('Bir hata oluştu. Lütfen daha sonra tekrar deneyin.');
-            })
-            .finally(() => {
-                // İşlem tamamlandığında butonu tekrar aktif et
-                submitButton.disabled = false;
-                submitButton.innerHTML = 'Gönder';
+                $.ajax({
+                    url: '@Url.Action("Iletisim", "Home")',
+                    type: 'POST',
+                    data: formData,
+                    success: function(response) {
+                        if (response.success) {
+                            alert('Mesajınız başarıyla gönderildi. En kısa sürede size dönüş yapacağız.');
+                            $('#contactForm')[0].reset();
+                        } else {
+                            alert(response.message || 'Bir hata oluştu. Lütfen daha sonra tekrar deneyin.');
+                        }
+                    },
+                    error: function() {
+                        alert('Bir hata oluştu. Lütfen daha sonra tekrar deneyin.');
+                    }
+                });
             });
         });
     </script>

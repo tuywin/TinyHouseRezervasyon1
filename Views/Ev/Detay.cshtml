@@ -1,0 +1,145 @@
+@model TinyHouseRezervasyon.Models.Ev
+@{
+    ViewData["Title"] = Model.Baslik;
+}
+
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-md-8">
+            <div class="card shadow-sm mb-4">
+                <div id="evCarousel" class="carousel slide" data-bs-ride="carousel">
+                    <div class="carousel-inner">
+                        @if (!string.IsNullOrEmpty(Model.ResimUrl))
+                        {
+                            <div class="carousel-item active">
+                                <img src="@Model.ResimUrl" class="d-block w-100" alt="@Model.Baslik" style="height: 400px; object-fit: cover;">
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="carousel-item active">
+                                <div class="d-block w-100 bg-light d-flex align-items-center justify-content-center" style="height: 400px;">
+                                    <i class="fas fa-home fa-5x text-muted"></i>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#evCarousel" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Önceki</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#evCarousel" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Sonraki</span>
+                    </button>
+                </div>
+            </div>
+
+            <div class="card shadow-sm mb-4">
+                <div class="card-body">
+                    <h2 class="card-title">@Model.Baslik</h2>
+                    <p class="text-muted">
+                        <i class="fas fa-map-marker-alt"></i> @Model.Sehir, @Model.Adres
+                    </p>
+                    <hr>
+                    <h5>Ev Hakkında</h5>
+                    <p class="card-text">@Model.Aciklama</p>
+                </div>
+            </div>
+
+            <div class="card shadow-sm mb-4">
+                <div class="card-body">
+                    <h5>Özellikler</h5>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <ul class="list-unstyled">
+                                <li><i class="fas fa-users"></i> @Model.KisiSayisi kişi kapasite</li>
+                                <li><i class="fas fa-bed"></i> @Model.YatakSayisi yatak</li>
+                                <li><i class="fas fa-bath"></i> @Model.BanyoSayisi banyo</li>
+                            </ul>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="ev-ozellikler">
+                                <h3>Özellikler</h3>
+                                <ul>
+                                    @foreach (var ozellik in Model.Ozellikler)
+                                    {
+                                        <li><i class="fas fa-check"></i> @ozellik</li>
+                                    }
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card shadow-sm sticky-top" style="top: 20px;">
+                <div class="card-body">
+                    <h4 class="card-title">@Model.Fiyat.ToString("C") <small class="text-muted">/ gece</small></h4>
+                    <form id="rezervasyonForm" asp-controller="Rezervasyon" asp-action="Olustur" method="post">
+                        <input type="hidden" name="EvId" value="@Model.Id" />
+                        
+                        <div class="mb-3">
+                            <label class="form-label">Giriş Tarihi</label>
+                            <input type="date" name="GirisTarihi" class="form-control" required min="@DateTime.Now.ToString("yyyy-MM-dd")" />
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Çıkış Tarihi</label>
+                            <input type="date" name="CikisTarihi" class="form-control" required min="@DateTime.Now.AddDays(1).ToString("yyyy-MM-dd")" />
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Kişi Sayısı</label>
+                            <input type="number" name="KisiSayisi" class="form-control" required min="1" max="@Model.KisiSayisi" />
+                            <small class="text-muted">Maksimum @Model.KisiSayisi kişi</small>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary w-100">
+                            Rezervasyon Yap
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        $(document).ready(function() {
+            $('#rezervasyonForm').on('submit', function(e) {
+                e.preventDefault();
+                
+                var girisTarihi = new Date($('input[name="GirisTarihi"]').val());
+                var cikisTarihi = new Date($('input[name="CikisTarihi"]').val());
+                
+                if (cikisTarihi <= girisTarihi) {
+                    toastr.error('Çıkış tarihi giriş tarihinden sonra olmalıdır.');
+                    return;
+                }
+                
+                $.ajax({
+                    url: $(this).attr('action'),
+                    type: 'POST',
+                    data: $(this).serialize(),
+                    success: function(response) {
+                        if (response.success) {
+                            toastr.success(response.message);
+                            setTimeout(function() {
+                                window.location.href = '/Rezervasyonlarim';
+                            }, 1000);
+                        } else {
+                            toastr.error(response.message);
+                        }
+                    },
+                    error: function() {
+                        toastr.error('Bir hata oluştu. Lütfen daha sonra tekrar deneyin.');
+                    }
+                });
+            });
+        });
+    </script>
+} 

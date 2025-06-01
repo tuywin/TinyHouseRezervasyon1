@@ -1,0 +1,95 @@
+@model TinyHouseRezervasyon.ViewModels.RegisterViewModel
+@{
+    ViewData["Title"] = "Kayıt Ol";
+}
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="text-center">@ViewData["Title"]</h3>
+                </div>
+                <div class="card-body">
+                    <form id="registerForm" asp-action="Register" asp-controller="Account" method="post">
+                        <div asp-validation-summary="ModelOnly" class="alert alert-danger d-none" id="errorAlert"></div>
+                        <div class="alert alert-success d-none" id="successAlert"></div>
+
+                        <div class="form-group mb-3">
+                            <label asp-for="FullName">Ad Soyad</label>
+                            <input asp-for="FullName" class="form-control" />
+                            <span asp-validation-for="FullName" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-group mb-3">
+                            <label asp-for="Email">E-posta</label>
+                            <input asp-for="Email" class="form-control" />
+                            <span asp-validation-for="Email" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-group mb-3">
+                            <label asp-for="Phone">Telefon</label>
+                            <input asp-for="Phone" class="form-control" />
+                            <span asp-validation-for="Phone" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-group mb-3">
+                            <label asp-for="Password">Şifre</label>
+                            <input asp-for="Password" class="form-control" />
+                            <span asp-validation-for="Password" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-group mb-3">
+                            <label asp-for="ConfirmPassword">Şifre Tekrar</label>
+                            <input asp-for="ConfirmPassword" class="form-control" />
+                            <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-group mb-3">
+                            <label asp-for="UserType">Hesap Türü</label>
+                            <select asp-for="UserType" class="form-control" asp-items="Html.GetEnumSelectList<TinyHouseRezervasyon.Models.UserType>()">
+                                <option value="">Seçiniz</option>
+                            </select>
+                            <span asp-validation-for="UserType" class="text-danger"></span>
+                        </div>
+
+                        <div class="d-grid gap-2">
+                            <button type="submit" class="btn btn-primary">Kayıt Ol</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        $(document).ready(function() {
+            $('#registerForm').on('submit', function(e) {
+                e.preventDefault();
+                
+                var formData = $(this).serialize();
+
+                $.ajax({
+                    url: '@Url.Action("Register", "Account")',
+                    type: 'POST',
+                    data: formData,
+                    success: function(response) {
+                        if (response.success) {
+                            $('#successAlert').removeClass('d-none').text(response.message);
+                            setTimeout(function() {
+                                window.location.href = '/';
+                            }, 2000);
+                        } else {
+                            $('#errorAlert').removeClass('d-none').text(response.message);
+                        }
+                    },
+                    error: function(xhr, status, error) {
+                        $('#errorAlert').removeClass('d-none').text('Bir hata oluştu: ' + error);
+                    }
+                });
+            });
+        });
+    </script>
+} 

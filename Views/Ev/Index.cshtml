@@ -1,0 +1,94 @@
+@model IEnumerable<TinyHouseRezervasyon.Models.Ev>
+@{
+    ViewData["Title"] = "Evlerim";
+}
+
+<div class="container mt-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2>Evlerim</h2>
+        <a href="/Ev/Ekle" class="btn btn-primary">
+            <i class="fas fa-plus"></i> Yeni Ev Ekle
+        </a>
+    </div>
+
+    @if (!Model.Any())
+    {
+        <div class="alert alert-info">
+            Henüz hiç ev eklemediniz. Yeni bir ev eklemek için "Yeni Ev Ekle" butonuna tıklayın.
+        </div>
+    }
+    else
+    {
+        <div class="row">
+            @foreach (var ev in Model)
+            {
+                <div class="col-md-6 col-lg-4 mb-4">
+                    <div class="card h-100 shadow-sm">
+                        @if (!string.IsNullOrEmpty(ev.ResimUrl))
+                        {
+                            <img src="@ev.ResimUrl" class="card-img-top" alt="@ev.Baslik" style="height: 200px; object-fit: cover;">
+                        }
+                        else
+                        {
+                            <div class="card-img-top bg-light d-flex align-items-center justify-content-center" style="height: 200px;">
+                                <i class="fas fa-home fa-3x text-muted"></i>
+                            </div>
+                        }
+                        <div class="card-body">
+                            <h5 class="card-title">@ev.Baslik</h5>
+                            <p class="card-text text-muted">
+                                <i class="fas fa-map-marker-alt"></i> @ev.Sehir
+                            </p>
+                            <p class="card-text">
+                                <small class="text-muted">
+                                    <i class="fas fa-users"></i> @ev.KisiSayisi kişi |
+                                    <i class="fas fa-bed"></i> @ev.YatakSayisi yatak |
+                                    <i class="fas fa-bath"></i> @ev.BanyoSayisi banyo
+                                </small>
+                            </p>
+                            <p class="card-text">
+                                <strong>@ev.Fiyat.ToString("C")</strong> / gece
+                            </p>
+                        </div>
+                        <div class="card-footer bg-white">
+                            <div class="btn-group w-100">
+                                <a href="/Ev/Duzenle/@ev.Id" class="btn btn-outline-primary">
+                                    <i class="fas fa-edit"></i> Düzenle
+                                </a>
+                                <button type="button" class="btn btn-outline-danger" onclick="evSil(@ev.Id)">
+                                    <i class="fas fa-trash"></i> Sil
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    }
+</div>
+
+@section Scripts {
+    <script>
+        function evSil(id) {
+            if (confirm('Bu evi silmek istediğinizden emin misiniz?')) {
+                $.ajax({
+                    url: '/Ev/Sil/' + id,
+                    type: 'POST',
+                    success: function(response) {
+                        if (response.success) {
+                            toastr.success(response.message);
+                            setTimeout(function() {
+                                window.location.reload();
+                            }, 1000);
+                        } else {
+                            toastr.error(response.message);
+                        }
+                    },
+                    error: function() {
+                        toastr.error('Bir hata oluştu. Lütfen daha sonra tekrar deneyin.');
+                    }
+                });
+            }
+        }
+    </script>
+} 

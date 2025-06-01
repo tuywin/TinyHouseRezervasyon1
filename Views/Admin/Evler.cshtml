@@ -1,0 +1,90 @@
+@model IEnumerable<TinyHouseRezervasyon.Models.Ev>
+@{
+    ViewData["Title"] = "Evler";
+}
+
+<div class="container-fluid">
+    <h1 class="h3 mb-4 text-gray-800">Evler</h1>
+
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Ev Listesi</h6>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>Başlık</th>
+                            <th>Şehir</th>
+                            <th>Fiyat</th>
+                            <th>Kapasite</th>
+                            <th>Ev Sahibi</th>
+                            <th>Durum</th>
+                            <th>İşlemler</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var ev in Model)
+                        {
+                            <tr>
+                                <td>@ev.Baslik</td>
+                                <td>@ev.Sehir</td>
+                                <td>@ev.Fiyat.ToString("C")</td>
+                                <td>@ev.KisiSayisi</td>
+                                <td>@ev.EvSahibiAdi</td>
+                                <td>
+                                    <div class="custom-control custom-switch">
+                                        <input type="checkbox" class="custom-control-input" id="evDurum_@ev.Id"
+                                            @(ev.Aktif ? "checked" : "") onchange="evDurumDegistir(@ev.Id, this.checked)">
+                                        <label class="custom-control-label" for="evDurum_@ev.Id">
+                                            @(ev.Aktif ? "Aktif" : "Pasif")
+                                        </label>
+                                    </div>
+                                </td>
+                                <td>
+                                    <button class="btn btn-primary btn-sm" onclick="editEv(@ev.Id)">
+                                        <i class="fas fa-edit"></i> Düzenle
+                                    </button>
+                                    <button class="btn btn-danger btn-sm" onclick="deleteEv(@ev.Id)">
+                                        <i class="fas fa-trash"></i> Sil
+                                    </button>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        function evDurumDegistir(evId, aktif) {
+            $.post('/Admin/EvDurumDegistir', { id: evId, aktif: aktif })
+                .done(function(response) {
+                    if (response.success) {
+                        toastr.success('Ev durumu güncellendi');
+                    } else {
+                        toastr.error('Ev durumu güncellenirken bir hata oluştu');
+                    }
+                })
+                .fail(function() {
+                    toastr.error('Ev durumu güncellenirken bir hata oluştu');
+                });
+        }
+
+        function editEv(evId) {
+            // Ev düzenleme modalını aç
+            // TODO: Implement
+        }
+
+        function deleteEv(evId) {
+            if (confirm('Bu evi silmek istediğinizden emin misiniz?')) {
+                // Ev silme işlemi
+                // TODO: Implement
+            }
+        }
+    </script>
+} 

@@ -1,0 +1,42 @@
+@model IEnumerable<TinyHouseRezervasyon.Models.Ev>
+
+<div class="row">
+    @foreach (var ev in Model)
+    {
+        <div class="col-md-4 mb-4">
+            <div class="card h-100 shadow-sm">
+                @if (!string.IsNullOrEmpty(ev.ResimUrl))
+                {
+                    <img src="@ev.ResimUrl" class="card-img-top" alt="@ev.Baslik" style="height: 200px; object-fit: cover;">
+                }
+                else
+                {
+                    <div class="card-img-top bg-light d-flex align-items-center justify-content-center" style="height: 200px;">
+                        <i class="fas fa-home fa-3x text-muted"></i>
+                    </div>
+                }
+                <div class="card-body">
+                    <h5 class="card-title">@ev.Baslik</h5>
+                    <p class="card-text text-muted">
+                        <i class="fas fa-map-marker-alt"></i> @ev.Sehir
+                    </p>
+                    <p class="card-text">
+                        <small class="text-muted">
+                            <i class="fas fa-users"></i> @ev.KisiSayisi kişi |
+                            <i class="fas fa-bed"></i> @ev.YatakSayisi yatak |
+                            <i class="fas fa-bath"></i> @ev.BanyoSayisi banyo
+                        </small>
+                    </p>
+                    <p class="card-text">
+                        <strong>@ev.Fiyat.ToString("C")</strong> / gece
+                    </p>
+                </div>
+                <div class="card-footer bg-white">
+                    <a href="/Ev/Detay/@ev.Id" class="btn btn-primary w-100">
+                        Detayları Gör
+                    </a>
+                </div>
+            </div>
+        </div>
+    }
+</div> 
