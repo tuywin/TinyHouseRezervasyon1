@@ -61,10 +61,10 @@
                         <div class="col-md-6">
                             <div class="ev-ozellikler">
                                 <h3>Özellikler</h3>
-                                <ul>
-                                    @foreach (var ozellik in Model.Ozellikler)
+                                <ul class="list-unstyled">
+                                    @foreach (var ozellik in Model.Ozellikler.Split(','))
                                     {
-                                        <li><i class="fas fa-check"></i> @ozellik</li>
+                                        <li><i class="fas fa-check text-success me-2"></i> @ozellik.Trim()</li>
                                     }
                                 </ul>
                             </div>

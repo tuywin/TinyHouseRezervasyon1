@@ -21,8 +21,48 @@
       "PackagePath": "staticwebassets/images/antalya.jpg"
     },
     {
+      "Id": "/Users/emiryildiz/TinyHouseRezervasyon/wwwroot/images/artvin.jpg",
+      "PackagePath": "staticwebassets/images/artvin.jpg"
+    },
+    {
+      "Id": "/Users/emiryildiz/TinyHouseRezervasyon/wwwroot/images/aydin.jpg",
+      "PackagePath": "staticwebassets/images/aydin.jpg"
+    },
+    {
       "Id": "/Users/emiryildiz/TinyHouseRezervasyon/wwwroot/images/bolu.jpg",
       "PackagePath": "staticwebassets/images/bolu.jpg"
+    },
+    {
+      "Id": "/Users/emiryildiz/TinyHouseRezervasyon/wwwroot/images/bursa.jpg",
+      "PackagePath": "staticwebassets/images/bursa.jpg"
+    },
+    {
+      "Id": "/Users/emiryildiz/TinyHouseRezervasyon/wwwroot/images/ev1.jpg",
+      "PackagePath": "staticwebassets/images/ev1.jpg"
+    },
+    {
+      "Id": "/Users/emiryildiz/TinyHouseRezervasyon/wwwroot/images/ev2.jpg",
+      "PackagePath": "staticwebassets/images/ev2.jpg"
+    },
+    {
+      "Id": "/Users/emiryildiz/TinyHouseRezervasyon/wwwroot/images/ev3.jpg",
+      "PackagePath": "staticwebassets/images/ev3.jpg"
+    },
+    {
+      "Id": "/Users/emiryildiz/TinyHouseRezervasyon/wwwroot/images/ev4.jpg",
+      "PackagePath": "staticwebassets/images/ev4.jpg"
+    },
+    {
+      "Id": "/Users/emiryildiz/TinyHouseRezervasyon/wwwroot/images/ev5.jpg",
+      "PackagePath": "staticwebassets/images/ev5.jpg"
+    },
+    {
+      "Id": "/Users/emiryildiz/TinyHouseRezervasyon/wwwroot/images/ev6.jpg",
+      "PackagePath": "staticwebassets/images/ev6.jpg"
+    },
+    {
+      "Id": "/Users/emiryildiz/TinyHouseRezervasyon/wwwroot/images/fethiye.jpg",
+      "PackagePath": "staticwebassets/images/fethiye.jpg"
     },
     {
       "Id": "/Users/emiryildiz/TinyHouseRezervasyon/wwwroot/images/hero-bg.jpg",

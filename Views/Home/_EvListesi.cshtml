@@ -28,6 +28,14 @@
                         </small>
                     </p>
                     <p class="card-text">
+                        <small class="text-muted">
+                            @foreach (var ozellik in ev.Ozellikler.Split(',').Take(3))
+                            {
+                                <span class="badge bg-light text-dark me-1">@ozellik.Trim()</span>
+                            }
+                        </small>
+                    </p>
+                    <p class="card-text">
                         <strong>@ev.Fiyat.ToString("C")</strong> / gece
                     </p>
                 </div>
